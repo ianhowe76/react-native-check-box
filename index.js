@@ -46,7 +46,16 @@ export default class CheckBox extends Component {
         isIndeterminate: false,
         leftTextStyle: {},
         rightTextStyle: {}
+    };
+
+    componentWillUpdate(nextProps) {
+        if (nextProps.isChecked !=== this.state.isChecked) {
+          this.setState({
+            isChecked: this.props.isChecked,
+          });
+        }
     }
+
     onClick() {
         this.setState({
             isChecked: !this.state.isChecked
@@ -97,7 +106,7 @@ export default class CheckBox extends Component {
         return (
             <TouchableHighlight
                 style={this.props.style}
-                onPress={()=>this.onClick()}
+                onPress={this.onClick}
                 underlayColor='transparent'
                 disabled={this.props.disabled}
             >
