@@ -56,12 +56,13 @@ export default class CheckBox extends Component {
         }
     }
 
-    onClick() {
+    handlePress = () => {
         this.setState({
             isChecked: !this.state.isChecked
         })
         this.props.onClick();
-    }
+    };
+
     _renderLeft() {
         if (this.props.leftTextView)return this.props.leftTextView;
         if (!this.props.leftText)return null;
@@ -106,7 +107,7 @@ export default class CheckBox extends Component {
         return (
             <TouchableHighlight
                 style={this.props.style}
-                onPress={this.onClick}
+                onPress={this.handlePress}
                 underlayColor='transparent'
                 disabled={this.props.disabled}
             >
